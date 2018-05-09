@@ -1,5 +1,6 @@
 // This example file is meant to give you an idea of some of the basic
 // Sphero commands. Refer to this when solving activities 1 & 2.
+
 var sphero = require('./sphero.js');
 
 // First step is to connect to Sphero
@@ -9,21 +10,17 @@ sphero.connect(function() {
   sphero.roll(200,90)
 
   // Get Sphero's color
-  var color = sphero.getColor();
-  console.log("Sphero's current color is: " + color);
+  console.log("Sphero's current color is: " + sphero.getColor());
 
   // Change Sphero's color
-  sphero.setColor("Blue")
+  sphero.setColor('blue');
 
   // Verify Sphero's color has changed
-  var color = sphero.getColor();
-  console.log("Sphero's current color is: " + color);
+  console.log("Sphero's current color is: " + sphero.getColor());
 
   // Use the Odometer to find Sphero's position in format [x,y]
-  var position = sphero.readOdometer();
-  console.log(position);
+  console.log(sphero.readOdometer());
 
   // Check if Sphero's state is what is expected
-  sphero.assertState(0, 200, 'Blue')
-
+  console.log(sphero.assertState(0, 200, 'blue'));
 });
