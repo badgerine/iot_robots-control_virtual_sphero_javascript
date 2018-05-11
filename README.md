@@ -1,16 +1,17 @@
 ### Make: IoT Robots
-## Learn to Control Sphero Programmatically
+## Control virtual Sphero with Javascript
 
 <img src="assets/sphero.jpg" width="120" height="100" align="left" />
 
 <br>
 
-We're going to be playing with a <b>Sphero</b> robot on Make Day! The two activities in this repo are intended to give you some familiarity with Sphero's Javascript SDK. Since you probably don't have a Sphero at home, we'll use a mock library that will give you the basic idea.
+We're going to be playing with a <b>Sphero</b> robot on Make Day! The two activities in this repo are intended to give you some familiarity with Sphero's Javascript SDK. Since you probably don't have a Sphero at home, we'll use a mock library that will give you the basic idea of which commands you can use to interact with the robot.
 
-### Getting started
+### Getting started  
+
 
 Make sure you've [installed NodeJS](http://yoember.com/nodejs/the-best-way-to-install-node-js/), which allows you to run JavaScript files in the terminal. You can edit activity files in the text editor of your choice. We personally like Sublime or Virtual Studio, but others are great too. 
-- 
+
 
 <br>
 
