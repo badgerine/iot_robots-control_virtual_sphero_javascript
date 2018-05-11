@@ -7,6 +7,11 @@
 
 We're going to be playing with a <b>Sphero</b> robot on Make Day! The two activities in this repo are intended to give you some familiarity with Sphero's Javascript SDK. Since you probably don't have a Sphero at home, we'll use a mock library that will give you the basic idea.
 
+### Getting started
+
+Make sure you've [installed NodeJS](http://yoember.com/nodejs/the-best-way-to-install-node-js/), which allows you to run JavaScript files in the terminal. You can edit activity files in the text editor of your choice. We personally like Sublime or Virtual Studio, but others are great too. 
+- 
+
 <br>
 
 If you want explore the SDK itself then have a look here: https://github.com/orbotix/sphero.js
@@ -31,6 +36,7 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 <i> Change Sphero's color and move him programmatically. </i>
 
 * Open activity_1.js and add the required code so that Sphero's final position is at <b>(0, 200)</b> and it's color is <b>"blue"</b>.
+* Run the activity with `node activity_1.js`.
 
 ### Activity #2 (Optional)
 
@@ -38,3 +44,4 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 
 * Open `activity_2.js` and find Sphero's initial position.
 * You have to send Sphero back to <b>(0, 0)</b>, so use the Odometer's reading and figure out a way to do that!
+* Run the activity with `node activity_2.js`.
