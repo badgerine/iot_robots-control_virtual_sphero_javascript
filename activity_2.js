@@ -3,19 +3,15 @@
 
 var sphero = require('./sphero.js');
 
-sphero.connect(function() {
-  // randomizing Sphero's initial position...
-  sphero.roll(Math.random() * 500, Math.random() * 360);
-
+sphero.connect_random(function() {
   // your code goes between here...
 
-  // ... and here.
 
   // let's check your code...
-  if (sphero.assertState(0, 0, 'red')) {
-    console.log("Congrats, you've passed Activity #1!")
+  if (sphero.assertState(0, 0)) {
+    console.log("\nCongrats, you've completed Activity #2!")
   } else {
-    console.log("Woops! Sphero isn't quite there yet...");
+    console.log("\nWoops! Sphero isn't quite there yet...");
   }
 });
 

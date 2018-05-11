@@ -22,5 +22,5 @@ sphero.connect(function() {
   console.log(sphero.readOdometer());
 
   // Check if Sphero's state is what is expected
-  console.log(sphero.assertState(0, 200, 'blue'));
+  sphero.assertState(0, 200, 'blue');
 });

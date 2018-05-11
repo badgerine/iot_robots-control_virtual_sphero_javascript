@@ -1,4 +1,5 @@
-## Prep Activity: Learn to Control Sphero Programmatically
+### Make: IoT Robots
+## Learn to Control Sphero Programmatically
 
 <img src="assets/sphero.jpg" width="120" height="100" align="left" />
 
@@ -29,7 +30,7 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 
 <i> Change Sphero's color and move him programmatically. </i>
 
-* Open activity_1.js and add the required code so that Sphero's final position is at <b>(0, 200)</b> and it's color is <b>"Blue"</b>.
+* Open activity_1.js and add the required code so that Sphero's final position is at <b>(0, 200)</b> and it's color is <b>"blue"</b>.
 
 ### Activity #2 (Optional)
 
