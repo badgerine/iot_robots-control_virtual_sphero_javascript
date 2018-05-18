@@ -7,8 +7,6 @@
     , sin = Math.sin
     , width = c.cols
     , height = c.rows
-    , p1x = c.cols/2
-    , p1y = c.rows-2
     , gameLoop
     , interval = 20
     , tick =0
@@ -18,6 +16,7 @@
     ;
 
     var theBrush = ' ';
+
 
   genEnemies();
   function genEnemies(){
@@ -32,6 +31,16 @@
         }
       }
     }
+  }
+
+  function updateBarrier(){
+    c.bg(255,255,255);
+    c.box(0,0,170,60);
+    c.scrub(4,2,164,57);
+  }
+
+  function updateSphero(){
+    drawSphero(75,28);
   }
 
   function updateEnemies(){
@@ -56,6 +65,11 @@
     });
   }
 
+  function drawSphero(x,y){
+    c.bg(80,150,230);
+    c.line(x,y, x+2, y+1);
+  }
+
   function drawEnemy(x,y){
     c.line(x-1, y, x+1, y);
     c.line(x-1, y, x-1, y+2);
@@ -68,9 +82,12 @@
     width = c.cols;
     height = c.rows;
 
-    updateEnemies();
+    updateBarrier();
+    updateSphero();
+    // updateEnemies();
   }
 
+  //// GAME LOOP LOGIC ///////////////////////////////////////////////////////
 
   function endGame(){
     process.stdin.pause();

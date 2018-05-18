@@ -26,11 +26,37 @@ module.exports =
     getColor: function () {
         return this.color;
     },
-    move: function (distance, direction) {
-        console.log('-> moving sphero ' + distance + ' units at ' + direction + ' degrees...')
+    // roll: function (distance, direction) {
+    //     console.log('-> moving sphero ' + distance + ' units at ' + direction + ' degrees...')
+    //     var rads = direction * ( Math.PI / 180 );
+    //     this.xPos += distance * Math.cos(rads);
+    //     this.yPos += distance * Math.sin(rads);
+    // },
+    roll: function (speed, direction) {
+        console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
+        sphero = this
         var rads = direction * ( Math.PI / 180 );
-        this.xPos += distance * Math.cos(rads);
-        this.yPos += distance * Math.sin(rads);
+        var timeInt = 500;
+        setInterval(function() {
+            console.log('Moving sphero...');
+            // console.log('speed ' + speed);
+            // console.log('direction ' + direction);
+            // console.log('timeInt ' + timeInt);
+            // console.log('raddy ' + Math.cos(rads));
+            // console.log('product2 ' + speed * timeInt);
+            // console.log('product2 ' + speed * timeInt * Math.cos(rads));
+            // console.log(this.xPos);
+            // console.log(parseFloat(this.xPos.toFixed(2)));
+            console.log(sphero.xPos);
+            sphero.xPos += speed * timeInt * Math.cos(rads);
+            sphero.yPos += speed * timeInt * Math.sin(rads);
+            // console.log(this.xPos);
+            // console.log(parseFloat(this.xPos.toFixed(2)));
+            // console.log('Sphero is now at ' + '[' + parseFloat(this.xPos).toFixed(2) + ',' + parseFloat(this.yPos).toFixed(2) + ']...')
+        }, timeInt);
+            // this.xPos += direction * Math.cos(rads);
+            // this.yPos += direction * Math.sin(rads);
+
     },
     random_move: function () {
         var distance = Math.random() * 500;
