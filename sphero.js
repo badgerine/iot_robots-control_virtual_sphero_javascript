@@ -13,7 +13,7 @@ module.exports =
         work();
     },
     connect_random: function(work) {
-        this.random_roll();
+        this.random_move();
         console.log("...let's roll! \n")
         work();
     },
@@ -26,13 +26,13 @@ module.exports =
     getColor: function () {
         return this.color;
     },
-    roll: function (distance, direction) {
+    move: function (distance, direction) {
         console.log('-> moving sphero ' + distance + ' units at ' + direction + ' degrees...')
         var rads = direction * ( Math.PI / 180 );
         this.xPos += distance * Math.cos(rads);
         this.yPos += distance * Math.sin(rads);
     },
-    random_roll: function () {
+    random_move: function () {
         var distance = Math.random() * 500;
         var direction = Math.random() * 360;
         var rads = direction * ( Math.PI / 180 );
