@@ -22,7 +22,7 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 * `sphero.connect`: Connects to Sphero. All your code goes inside this function.
 
 * `sphero.roll`: Takes two arguments - distance (unitless) and direction (in degrees). The direction you specify is 0° relative to the x-axis - see the image below:
-<img src="assets/Counterclockwise_rotation.png" width="150" height="150" />
+<img src="assets/clockwise_rotation.png" width="150" height="150" />
 
 * `sphero.setColor`: Takes a string with the color as argument. In lower-case, e.g. "blue", "red", "green", etc.
 
