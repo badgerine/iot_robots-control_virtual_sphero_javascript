@@ -1,16 +1,83 @@
 // The sphero object below mimics *some* of the basic commands
 // you have access to when using the sphero.js library
 
+
+
+  var keypress = require('keypress'),
+    c = require('axel'),
+    interval = 20,
+    tick = 0;
+
 module.exports =
 {
     // iniitial state
-    xPos: 0,
-    yPos: 0,
+    xPos: 75,
+    yPos: 28,
     color: '',
     // mimic Sphero's connect method
     connect: function(work) {
         console.log("...let's roll! \n")
-        work();
+        sphero = this
+        function drawSphero(x,y){
+            c.bg(80,150,230);
+            c.line(x,y, x+2, y+1);
+        }
+
+        function updateBarrier(){
+            c.bg(255,255,255);
+            c.box(0,0,170,60);
+            c.scrub(4,2,164,57);
+        }
+        function updateSphero(){
+            // drawSphero(75,28);
+            // drawSphero(xPos,yPos);
+            drawSphero(sphero.xPos,sphero.yPos);
+        }
+
+        function eachLoop(){
+            tick+=1;
+            width = c.cols;
+            height = c.rows;
+            updateBarrier();
+            updateSphero();
+          }
+
+        function endGame(){
+            process.stdin.pause();
+            clearInterval(gameLoop);
+            c.cursor.on();
+            c.cursor.restore();
+          }
+
+          function start(){
+            c.cursor.off();
+            c.clear();
+            gameLoop = setInterval(eachLoop, interval);
+            process.stdin.setRawMode(true);
+            keypress(process.stdin);
+            process.stdin.resume();
+          }
+          process.stdin.on('keypress', function (ch, key) {
+
+            if (key) {
+              if (key.name == 'escape') endGame();
+              if (key.name == 'q') endGame();
+            }
+
+            if (key && key.ctrl && key.name == 'c') {
+              endGame();
+            }
+
+          });
+
+        setTimeout(function(){
+            start();
+            // c.bg(255,255,255);
+            // c.box(0,0,170,60);
+            // c.scrub(4,2,164,57);
+
+        }, 100);
+        // work();
     },
     connect_random: function(work) {
         this.random_move();
@@ -26,37 +93,16 @@ module.exports =
     getColor: function () {
         return this.color;
     },
-    // roll: function (distance, direction) {
-    //     console.log('-> moving sphero ' + distance + ' units at ' + direction + ' degrees...')
-    //     var rads = direction * ( Math.PI / 180 );
-    //     this.xPos += distance * Math.cos(rads);
-    //     this.yPos += distance * Math.sin(rads);
-    // },
     roll: function (speed, direction) {
         console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
         sphero = this
         var rads = direction * ( Math.PI / 180 );
-        var timeInt = 500;
-        setInterval(function() {
-            console.log('Moving sphero...');
-            // console.log('speed ' + speed);
-            // console.log('direction ' + direction);
-            // console.log('timeInt ' + timeInt);
-            // console.log('raddy ' + Math.cos(rads));
-            // console.log('product2 ' + speed * timeInt);
-            // console.log('product2 ' + speed * timeInt * Math.cos(rads));
-            // console.log(this.xPos);
-            // console.log(parseFloat(this.xPos.toFixed(2)));
-            console.log(sphero.xPos);
-            sphero.xPos += speed * timeInt * Math.cos(rads);
-            sphero.yPos += speed * timeInt * Math.sin(rads);
-            // console.log(this.xPos);
-            // console.log(parseFloat(this.xPos.toFixed(2)));
-            // console.log('Sphero is now at ' + '[' + parseFloat(this.xPos).toFixed(2) + ',' + parseFloat(this.yPos).toFixed(2) + ']...')
-        }, timeInt);
-            // this.xPos += direction * Math.cos(rads);
-            // this.yPos += direction * Math.sin(rads);
-
+        // var timeInt = 500;
+        // setInterval(function() {
+        //     console.log('Moving sphero...');
+        //     sphero.xPos += speed * timeInt * Math.cos(rads);
+        //     sphero.yPos += speed * timeInt * Math.sin(rads);
+        // }, timeInt);
     },
     random_move: function () {
         var distance = Math.random() * 500;

@@ -7,20 +7,20 @@ var sphero = require('./sphero.js');
 sphero.connect(function() {
 
   // Move Sphero a distance of 200 units at an angle of 90 degrees
-  sphero.move(200,90)
+  // sphero.roll(200,90)
 
   // Get Sphero's color
-  console.log("Sphero's current color is: " + sphero.getColor());
+  // console.log("Sphero's current color is: " + sphero.getColor());
 
   // Change Sphero's color
-  sphero.setColor('blue');
+  // sphero.setColor('blue');
 
   // Verify Sphero's color has changed
-  console.log("Sphero's current color is: " + sphero.getColor());
+  // console.log("Sphero's current color is: " + sphero.getColor());
 
   // Use the Odometer to find Sphero's position in format [x,y]
-  console.log(sphero.readOdometer());
+  // console.log(sphero.readOdometer());
 
   // Check if Sphero's state is what is expected
-  sphero.assertState(0, 200, 'blue');
+  // sphero.assertState(0, 200, 'blue');
 });
