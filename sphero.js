@@ -23,16 +23,41 @@ module.exports =
             // c.line(x,y, x+2, y);
         }
 
+
+    // \/
+    // /\
+        function drawGoal(){
+            // c.cursor.reset()
+            // c.bg(255,255,255);
+            c.fg(230,0,0);
+            var goalX = 40
+            var goalY = 20
+
+            c.brush = '/'
+            c.point(goalX - 2, goalY + 2)
+            c.point(goalX - 1, goalY + 1)
+            c.point(goalX, goalY)
+            c.point(goalX + 1, goalY - 1)
+            c.point(goalX + 2, goalY - 2)
+            c.point(goalX + 3, goalY - 3)
+
+            c.brush = '\\'
+            c.point(goalX - 2, goalY - 3)
+            c.point(goalX - 1, goalY - 2)
+            c.point(goalX, goalY - 1)
+            c.point(goalX + 1, goalY)
+            c.point(goalX + 2, goalY + 1)
+            c.point(goalX + 3, goalY + 2)
+        }
+
         function drawBarrier(){
             c.bg(255,255,255);
             // vertical lines
-            // c.brush = '||'
             c.line(1,0,1,60);
             c.line(2,0,2,60);
             c.line(168,0,168,60);
             c.line(169,0,169,60);
             // horizontal lines:
-            // c.brush = '-'
             c.line(0,0,170,0);
             c.line(0,60,170,60);
         }
@@ -50,8 +75,9 @@ module.exports =
 
             // c.brush = theBrush
             // c.clear()
-            // c.bg(80,150,230);
+            // c.fg(80,150,230);
             c.cursor.reset()
+            c.fg(80,150,230);
             c.brush = '0'
             c.point(sphero.xPos, sphero.yPos)
 
@@ -81,13 +107,14 @@ module.exports =
           }
 
         function start(){
-            c.cursor.off();
-            c.clear();
-            drawBarrier();
-            gameLoop = setInterval(eachLoop, interval);
-            process.stdin.setRawMode(true);
-            keypress(process.stdin);
-            process.stdin.resume();
+            c.cursor.off()
+            c.clear()
+            drawBarrier()
+            drawGoal()
+            gameLoop = setInterval(eachLoop, interval)
+            process.stdin.setRawMode(true)
+            keypress(process.stdin)
+            process.stdin.resume()
         }
           process.stdin.on('keypress', function (ch, key) {
 
