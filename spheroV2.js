@@ -16,8 +16,9 @@ module.exports =
   speed: 0.0,
   direction: 0.0,
   color: '',
-  goalX: 40,
+  goalX: 120,
   goalY: 20,
+  // rolling: true,
 
   draw: function() {
     c.cursor.reset()
@@ -29,10 +30,18 @@ module.exports =
     c.brush = '0'
     c.point(sphero.xPos, sphero.yPos)
   },
+  hitTarget: function() {
+    if ((Math.abs(sphero.xPos-sphero.goalX) < 6) && (Math.abs(sphero.yPos-sphero.goalY) < 6)){
+      return true
+    } else {
+      return false
+    }
+  },
   // mimic Sphero's connect method
   connect: function(work) {
       console.log("...let's roll! \n")
       sphero = this
+
       function drawGoal(){
           c.fg(230,0,0);
           var goalX = sphero.goalX
@@ -66,43 +75,6 @@ module.exports =
           c.line(0,60,170,60);
       }
 
-      function eachLoop(){
-          tick+=1;
-          updateSphero();
-        }
-
-      function endGame(){
-          process.stdin.pause();
-          clearInterval(gameLoop);
-          c.cursor.on();
-          c.cursor.restore();
-        }
-
-      function start(){
-          work()
-          c.cursor.off()
-          c.clear()
-          drawBarrier()
-          drawGoal()
-          gameLoop = setInterval(eachLoop, interval)
-          process.stdin.setRawMode(true)
-          keypress(process.stdin)
-          process.stdin.resume()
-      }
-      process.stdin.on('keypress', function (ch, key) {
-
-        if (key) {
-          if (key.name == 'escape') endGame();
-          if (key.name == 'q') endGame();
-        }
-
-        if (key && key.ctrl && key.name == 'c') {
-          endGame();
-        }
-
-      });
-
-
       drawBarrier()
       drawGoal()
       work();
@@ -117,23 +89,22 @@ module.exports =
       return this.color;
   },
   roll: function (speed, direction) {
-
-      // sphero.speed = speed
-      // sphero.direction =
-
       // console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
       sphero = this
       speed = speed/100
       var rads = direction * ( Math.PI / 180 );
-      var timeInt = 500;
-      setInterval(function() {
+
+      var interval = setInterval(function () {
         sphero.lxPos = sphero.xPos
         sphero.lyPos = sphero.yPos
         sphero.xPos += speed * Math.cos(rads)
         sphero.yPos += speed * Math.sin(rads)
-        // sphero.drawSphero(sphero.xPos, sphero.yPos)
+
+        if(sphero.hitTarget() == true){
+          clearInterval(interval)
+        }
         sphero.draw()
-      }, timeInt);
+      }, 100);
   },
   setColor: function (color) {
       console.log("-> changing sphero's color to " + color + '...');
