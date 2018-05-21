@@ -13,6 +13,8 @@ module.exports =
     // iniitial state
     xPos: 10,
     yPos: 55,
+    speed: 0,
+    direction: 0,
     color: '',
     // mimic Sphero's connect method
     connect: function(work) {
@@ -23,9 +25,6 @@ module.exports =
             // c.line(x,y, x+2, y);
         }
 
-
-    // \/
-    // /\
         function drawGoal(){
             // c.cursor.reset()
             // c.bg(255,255,255);
@@ -107,6 +106,7 @@ module.exports =
           }
 
         function start(){
+            work()
             c.cursor.off()
             c.clear()
             drawBarrier()
@@ -157,16 +157,20 @@ module.exports =
         return this.color;
     },
     roll: function (speed, direction) {
-        console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
-        sphero = this
-        var rads = direction * ( Math.PI / 180 );
-        sphero.xPos = 20;
-        sphero.yPos = 20;
+
+        // sphero.speed = speed
+        // sphero.direction =
+
+        // console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
+        // sphero = this
+        // var rads = direction * ( Math.PI / 180 );
+        // sphero.xPos = 20;
+        // sphero.yPos = 20;
         // var timeInt = 500;
         // setInterval(function() {
-        //     console.log('Moving sphero...');
-        //     sphero.xPos += speed * timeInt * Math.cos(rads);
-        //     sphero.yPos += speed * timeInt * Math.sin(rads);
+            // console.log('Moving sphero...');
+            // sphero.xPos += speed * tick * Math.cos(rads);
+            // sphero.yPos += speed * tick * Math.sin(rads);
         // }, timeInt);
     },
     random_move: function () {
