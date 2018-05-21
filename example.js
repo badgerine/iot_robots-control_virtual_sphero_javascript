@@ -1,6 +1,7 @@
 // This example file is meant to give you an idea of some of the basic
 // Sphero commands. Refer to this when solving activities 1 & 2.
 
+// var sphero = require('./sphero.js');
 var sphero = require('./spheroV2.js');
 
 // First step is to connect to Sphero
@@ -8,6 +9,7 @@ sphero.connect(function() {
 
   // Move Sphero a distance of 200 units at an angle of 90 degrees
   sphero.roll(200,-20)
+  // sphero.roll(10,20)
 
   // Get Sphero's color
   // console.log("Sphero's current color is: " + sphero.getColor());
