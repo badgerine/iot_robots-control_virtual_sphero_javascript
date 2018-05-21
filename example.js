@@ -8,7 +8,7 @@ var sphero = require('./spheroV2.js');
 sphero.connect(function() {
 
   // Move Sphero a distance of 200 units at an angle of 90 degrees
-  sphero.roll(400,-20)
+  sphero.roll(1000,-20)
   // sphero.roll(10,20)
 
   // Get Sphero's color
