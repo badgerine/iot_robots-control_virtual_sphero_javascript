@@ -1,9 +1,6 @@
-// The sphero object below mimics *some* of the basic commands
-// you have access to when using the sphero.js library
+// Sphero V2 is here
 
-var c = require('axel'),
-interval = 100,
-tick = 0;
+var c = require('axel');
 
 module.exports =
 {
@@ -14,14 +11,11 @@ module.exports =
   lxPos: 15.0,
   lyPos: 55.0,
   speed: 0.0,
-  goalX: 120,
-  goalY: 20,
+  goalX: 66,
+  goalY: 30,
   direction: 0.0,
   hitTarget: false,
 
-  madeIt: function() {
-    c.line(80, 40, 120, 70);
-  },
   draw: function() {
     c.cursor.reset()
     c.cursor.off()
@@ -33,7 +27,17 @@ module.exports =
     c.point(sphero.xPos, sphero.yPos)
   },
   onTarget: function() {
-    if ((Math.abs(sphero.xPos-sphero.goalX) < 6) && (Math.abs(sphero.yPos-sphero.goalY) < 6)){
+    if ((Math.abs(sphero.xPos-sphero.goalX) < 4) && (Math.abs(sphero.yPos-sphero.goalY) < 4)){
+      return true
+    } else {
+      return false
+    }
+  },
+  outOfBounds: function() {
+    xPos = sphero.xPos
+    yPos = sphero.yPos
+
+    if ((xPos < 0) || (xPos > 170) || (yPos < 0) || (yPos > 170)){
       return true
     } else {
       return false
@@ -42,7 +46,6 @@ module.exports =
   // mimic Sphero's connect method
   connect: function(work) {
 
-    console.log("...let's roll! \n")
     sphero = this
 
     function drawGoal(){
@@ -83,7 +86,6 @@ module.exports =
     work();
   },
   roll: function (speed, direction) {
-      // console.log('-> moving sphero at a speed of ' + speed + ' in ' + direction + ' degrees...')
       sphero = this
       speed = speed/100
       var rads = direction * ( Math.PI / 180 );
@@ -96,30 +98,34 @@ module.exports =
           sphero.xPos += speed * Math.cos(rads)
           sphero.yPos += speed * Math.sin(rads)
           sphero.draw()
-        } else {
+        }
+
+        if(sphero.outOfBounds() == true){
+          setTimeout(function() {
+            c.bg(255,0,0);
+            c.fg(255,255,255);
+            c.text(65,1," Sphero left the building :-(");
+          },250)
+          setTimeout(function(){
+            c.cursor.restore()
+            c.clear()
+            console.log("\n Please try again!")
+          },1000)
 
         }
 
         if(sphero.onTarget() == true){
-          // clearInterval(interval)
           sphero.hitTarget = true
-          // sphero.madeIt()
-          // c.clear()
-          // clearInterval(interval)
-          // console.log('whhheeeeee')
           setTimeout(function(){
-            // c.bg =
-
-            console.log('YOU WON')
-            c.cursor.reset()
-            c.cursor.off()
-            c.brush = ' '
-            c.bg(0,0,60);
-            c.box(0,0,170,60);
-
-            // clearInterval(interval)
-
-          },200)
+            c.bg(0,0,255);
+            c.fg(255,255,255);
+            c.text(65,1," Sphero hit the target! ");
+          },250)
+          setTimeout(function(){
+            c.cursor.restore()
+            c.clear()
+            console.log("\n Congrats, you've completed Activity #3!")
+          },1000)
         }
 
       }, 100);
