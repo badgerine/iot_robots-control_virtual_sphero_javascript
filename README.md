@@ -49,37 +49,10 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 * You have to send Sphero back to <b>(0, 0)</b>, so use the Odometer's reading and figure out a way to do that!
 * Run the activity with `node activity_2.js`.
 
-
+<!--
 ### Personal Notes for next iteration
 
 In `sphero.js` there are the following files of note:
 * In `/lib/commands`: `core.js` and `sphero.js`
 * `/lib/devices`: `core.js`, `custom.js` and `sphero.js`
-*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> update terminal vizualisation
+* -->
