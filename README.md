@@ -21,7 +21,7 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 
 * `sphero.connect`: Connects to Sphero. All your code goes inside this function.
 
-* `sphero.move`: Takes two arguments - distance (unitless) and direction (in degrees). The direction you specify is clockwise relative to the x-axis - see the image below:
+* `sphero.roll`: Takes two arguments - distance (unitless) and direction (in degrees). The direction you specify is clockwise relative to the x-axis - see the image below:
 <img src="assets/clockwise_rotation.png" width="150" height="150" />
 
 * `sphero.setColor`: Takes a string with the color as argument. In lower-case, e.g. "blue", "red", "green", etc.
@@ -31,8 +31,6 @@ If you want explore the SDK itself then have a look here: https://github.com/orb
 * `sphero.readOdometer`: We've cheated a little here! In the Sphero SDK the Odometer streams data asynchronously when invoking `streamOdometer`, while here we're just returning Sphero's position. We've included this function so you can get a little familiar with the concept.
 
 <b>TIP:</b> See `example.js` for all of the commands required to finish the two activities.
-
-<b>NOTE:</b> We've manually added the `move` command to simplify the prep activity - it's not part of the standard SDK, but we'll provide you with that function on the day if you want to use it. The standard command for moving sphero is `roll`, which takes <i>speed</i> and <i>angle</i> instead of distance and angle.
 
 ### Activity #1
 
