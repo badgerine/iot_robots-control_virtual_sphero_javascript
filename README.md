@@ -12,10 +12,10 @@ We're going to be playing with a <b>Sphero</b> robot on Make Day! The two activi
 
 Make sure you've [installed NodeJS](http://yoember.com/nodejs/the-best-way-to-install-node-js/), which allows you to run JavaScript files in the terminal. You can edit activity files in the text editor of your choice. We personally like Sublime or Virtual Studio, but others are great too.
 
-
-<br>
-
 If you want explore the SDK itself then have a look here: https://github.com/orbotix/sphero.js
+
+
+We've also created a Sphero CLI for the Make Day so if you want to have a look at that before hand then go here: https://github.com/OfferZen-Make/sphero-cli
 
 <b>Cheat Sheet.</b> Below are the commands you'll be learning about:
 
